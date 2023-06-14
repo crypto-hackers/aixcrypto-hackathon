@@ -1,0 +1,78 @@
+
+@startuml
+actor User
+participant Front
+participant Server
+participant AI
+participant Infura
+participant Chainlink
+collections VotingNFTContract
+
+== Voting Minimum ==
+User ->> Front : Tap voting button
+activate Front
+Front -> Front : Create tx
+User ->> Front : Sign
+Front -> Infura : Send tx
+activate Infura
+Infura -> VotingNFTContract : Transfer nft\n- tokenId, to
+activate VotingNFTContract
+VotingNFTContract -> VotingNFTContract : Transfer nft
+VotingNFTContract --> Infura : Receipt
+deactivate VotingNFTContract
+Infura --> Front : Receipt
+deactivate Infura
+deactivate Front
+
+== Voting Full ==
+User ->> Front : Tap voting button\nwith comment
+activate Front
+User ->> Front : Sign
+Front -> Server : Transfer Request\n- signature, comment
+activate Server
+Server -> AI : Predict\n- comment
+activate AI
+AI -> AI : Predict
+AI --> Server : Comment
+deactivate AI
+Server -> Server : Create tx
+Server -> Infura : Send tx
+activate Infura
+Infura -> VotingNFTContract : Transfer nft\n- tokenId, to
+activate VotingNFTContract
+VotingNFTContract -> VotingNFTContract : Transfer nft
+VotingNFTContract --> Infura : Receipt
+deactivate VotingNFTContract
+Infura --> Server : Receipt
+deactivate Infura
+Server --> Front : Result
+deactivate Server
+deactivate Front
+
+== Voting Extra ==
+User ->> Front : Tap voting button
+activate Front
+Front -> Front : Create tx
+User ->> Front : Sign
+Front -> Infura : Send tx
+activate Infura
+Infura -> VotingNFTContract : Transfer nft\n- tokenId, to
+activate VotingNFTContract
+VotingNFTContract --> Infura : Receipt
+Infura --> Front : Receipt
+deactivate Infura
+deactivate Front
+VotingNFTContract ->> Chainlink : Comment Request
+deactivate VotingNFTContract
+activate Chainlink
+Chainlink -> AI : Predict\n- comment
+activate AI
+AI -> AI : Predict
+AI --> Chainlink : Comment
+deactivate AI
+Chainlink -> VotingNFTContract : Transfer nft
+deactivate Chainlink
+activate VotingNFTContract
+VotingNFTContract -> VotingNFTContract : Transfer nft
+
+@enduml
