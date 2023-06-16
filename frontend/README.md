@@ -1,19 +1,38 @@
-# ディレクトリ構造
+# Project Structure
 
 ```
-/src // webflowから出力されたhtml,css,js,アセット等
-/dist // src配下のファイルをwebpackでビルドしたもの
+.
+├── src                     # Source files
+│   ├── idol                # Files exported from Webflow
+│   ├── top                 # Same as above
+│   └── candidates          # Same as above
+└── dist                    # Distribution files, built by webpack from /src
 ```
+
+# Getting Started
 
 # コマンド
 
-- src 配下のファイルで開発用サーバー立ち上げ
+## 1. 開発用サーバーの起動
 
-  - `node app.js`
+以下のコマンドを使用して、src ディレクトリ内のファイルで開発用サーバーを起動します
 
-- src 配下のファイルのビルド
+```
+node app.js
+```
 
-  - `npx webpack`
+## 2. ビルド
 
-- src 配下のファイルで firebase emulator 起動
-  - `firebase emulators:start`
+src ディレクトリ内のファイルをビルドするには、以下のコマンドを使用します：
+
+```
+npx webpack
+```
+
+## 3. Firebase Emulator の起動
+
+src ディレクトリ内のファイルで Firebase Emulator を起動するには、以下のコマンドを使用します：
+
+```
+firebase emulators:start
+```
