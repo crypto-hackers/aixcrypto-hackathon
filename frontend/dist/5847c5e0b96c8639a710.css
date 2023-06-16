@@ -1,0 +1,207 @@
+body {
+  color: #333;
+  background-color: #ebebeb;
+  font-family: IBM Plex Mono, sans-serif;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+a {
+  text-decoration: underline;
+}
+
+.grid---outer-wrap {
+  width: 100dvw;
+  height: 100dvh;
+  position: relative;
+  transform: scale(.4);
+}
+
+.grid {
+  grid-column-gap: 2vmin;
+  grid-row-gap: 2vmin;
+  grid-template-rows: 30vmin 30vmin 30vmin 30vmin 30vmin;
+  grid-template-columns: 30vmin 30vmin 30vmin 30vmin 30vmin 30vmin 30vmin;
+  grid-auto-rows: 30vmin;
+  grid-auto-columns: 30vmin;
+  padding: 6vmin;
+  display: grid;
+}
+
+.grid---item {
+  color: #8d8d8d;
+  cursor: pointer;
+  background-color: #2a2a2a;
+  padding: 25%;
+  font-family: Inconsolata, monospace;
+  font-weight: 300;
+  position: relative;
+}
+
+.grid---inner-wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.div-block-2 {
+  transform: scale3d(1none, 1none, 1none);
+  transform-style: preserve-3d;
+}
+
+.grid---outest-wrap {
+  overflow: hidden;
+}
+
+.grid---image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.grid---item-text {
+  color: #d8d8d8;
+  text-align: left;
+  border: 1px solid rgba(0, 0, 0, 0);
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  right: 1.5rem;
+}
+
+.div-block-3 {
+  width: 365.305px;
+}
+
+.grid---item-text-copy {
+  direction: ltr;
+  text-align: right;
+  text-transform: none;
+  white-space: normal;
+  -webkit-text-fill-color: inherit;
+  object-fit: fill;
+  background-clip: border-box;
+  justify-content: flex-end;
+  align-items: flex-end;
+  margin-top: 0;
+  text-decoration: underline;
+  display: flex;
+  position: absolute;
+  top: 0;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  right: 1.5rem;
+}
+
+.text-block {
+  align-items: flex-end;
+  display: flex;
+  position: absolute;
+}
+
+.grid---item-text-copy {
+  -webkit-text-fill-color: inherit;
+  background-clip: border-box;
+  font-size: .75rem;
+  text-decoration: none;
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  right: 1.5rem;
+}
+
+.body {
+  background-color: #000;
+}
+
+.grid---item-text-copy {
+  color: #d8d8d8;
+  text-align: right;
+  border: 1px solid rgba(0, 0, 0, 0);
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  right: 1.5rem;
+}
+
+.grid---item-text-copy-copy {
+  color: #d8d8d8;
+  text-align: right;
+  border: 1px solid rgba(0, 0, 0, 0);
+  font-size: .75rem;
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  right: 1.5rem;
+}
+
+@media screen and (max-width: 991px) {
+  .grid---outer-wrap {
+    width: auto;
+    height: auto;
+    transform: none;
+  }
+
+  .grid {
+    grid-column-gap: 2vw;
+    grid-row-gap: 2vw;
+    grid-template-rows: 30vw;
+    grid-template-columns: 30vw 30vw 30vw 30vw;
+    grid-auto-rows: 30vw;
+    grid-auto-columns: 30vw;
+    padding: 3vmin;
+  }
+
+  .grid---inner-wrap {
+    position: static;
+    transform: none;
+  }
+
+  .grid---item-text, .grid---item-text-copy, .grid---item-text-copy, .grid---item-text-copy, .grid---item-text-copy, .grid---item-text-copy, .grid---item-text-copy-copy {
+    top: 1rem;
+    left: 1rem;
+    right: 1rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  body {
+    font-size: .667rem;
+  }
+
+  .grid {
+    grid-template-rows: 46vw;
+    grid-template-columns: 46vw 46vw;
+    grid-auto-rows: 46vw;
+    grid-auto-columns: 46vw;
+  }
+}
+
+#w-node-_694693f2-8750-0b6c-3247-b580fc9b4b4a-4012d612, #w-node-f25f53cd-52af-352e-39bb-3e7693f6c325-4012d612, #w-node-_14984673-50ec-519a-74ee-e89c9c271b82-4012d612, #w-node-_491d3bc0-9d6a-8041-3ce0-54e85b799c19-4012d612, #w-node-e56e3737-6048-bbdd-1367-2fd28bb71a2b-4012d612 {
+  grid-area: span 2 / span 2 / span 2 / span 2;
+}
+
+@media screen and (max-width: 767px) {
+  #w-node-_5f3504af-80e4-40d1-5916-19d1a1e4b5f8-4012d612 {
+    grid-area: span 2 / span 2 / span 2 / span 2;
+  }
+
+  #w-node-_694693f2-8750-0b6c-3247-b580fc9b4b4a-4012d612 {
+    grid-area: span 1 / span 1 / span 1 / span 1;
+  }
+
+  #w-node-eab19d17-ddb0-d266-47ff-216781fd0f9f-4012d612 {
+    grid-area: span 2 / span 2 / span 2 / span 2;
+  }
+
+  #w-node-_491d3bc0-9d6a-8041-3ce0-54e85b799c19-4012d612 {
+    grid-area: span 1 / span 1 / span 1 / span 1;
+  }
+
+  #w-node-_6bec6999-365e-a141-74fa-01aaa503ab7c-4012d612 {
+    grid-area: span 2 / span 2 / span 2 / span 2;
+  }
+}
+
+
