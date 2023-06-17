@@ -4,10 +4,13 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = [
     {
+        mode: 'development',
+        devtool: false,
         entry: {
             top: './src/top/js/webflow.js',
             candidates: './src/candidates/js/webflow.js',
-            idol: './src/idol/js/webflow.js',
+            idol1: './src/idol/js/webflow.js',
+            idol2: './src/custom/js/idol.js',
         },
         output: {
             filename: '[name].[contenthash].js',
