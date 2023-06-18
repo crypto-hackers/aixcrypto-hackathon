@@ -16,7 +16,6 @@ module.exports = {
         candidates: './src/candidates/js/webflow.js',
         idol: './src/idol/js/webflow.js',
         idolMintJs: './src/lib/pages/idol/mint.js',
-        idolFireJs: './src/lib/pages/idol/firebase.js',
         walletConnectJs: './src/lib/pages/wallet-connect.js',
     },
     output: {
