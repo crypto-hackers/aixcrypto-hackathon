@@ -1,3 +1,35 @@
+window.onload = function() {
+    if (window.ethereum) {
+        try {
+            getAccount().then((account) => {
+                console.log(account);
+            });
+
+            getBlockNumber().then((blockNumber) => {
+                console.log(blockNumber);
+            });
+        } catch (error) {
+            console.error("User denied account access");
+        }
+    }
+    else {
+        console.log('Non-Ethereum browser detected. You should consider trying MetaMask!');
+    }
+}
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    const fileInput = document.getElementById('file');
+    const handleFileSelect = () => {
+        const files = fileInput.files;
+        for (let i = 0; i < files.length; i++) {
+            console.log(files[i])
+        }
+    }
+    if (fileInput) { // Check if fileInput is not null before attaching event
+        fileInput.addEventListener('change', handleFileSelect);
+    }
+});
+
 async function getAccount() {
     if (!window.ethereum) throw new Error('No Ethereum browser detected.');
     const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
