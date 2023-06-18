@@ -136,6 +136,54 @@ a {
   right: 1.5rem;
 }
 
+.navbar {
+  z-index: 999;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 2em 0 2em 2em;
+  display: flex;
+  position: fixed;
+  top: 0%;
+  bottom: 0%;
+  left: 0%;
+  right: auto;
+}
+
+.image {
+  width: 4em;
+  filter: invert();
+}
+
+.wallet_block {
+  flex-direction: column;
+  align-items: flex-start;
+  display: flex;
+}
+
+.wallet_btn {
+  color: #000;
+  cursor: pointer;
+  background-color: #fff;
+  margin-bottom: 1em;
+  padding: .4em .7em;
+  display: block;
+}
+
+.wallet_btn.send_eth {
+  display: none;
+}
+
+.wallet_btn.last {
+  margin-bottom: 0;
+}
+
+.connect_text {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 1em;
+}
+
 @media screen and (max-width: 991px) {
   .grid---outer-wrap {
     width: auto;

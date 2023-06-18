@@ -67,7 +67,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
 });
 
-// JavaScript
 var cropper;
 
 document.getElementById('mint-img-btn').addEventListener('click', function () {
@@ -101,7 +100,7 @@ document.getElementById('fileInput').addEventListener('change', function (e) {
             .then(() => {
                 var imgurl = cropper.getCroppedCanvas().toDataURL();
                 document.getElementById('mint-profile-img').src = imgurl;
-                image.src = imgurl;
+                document.getElementById('mint-profile-img').srcset = imgurl;
                 cropper.destroy();
             });
     }
