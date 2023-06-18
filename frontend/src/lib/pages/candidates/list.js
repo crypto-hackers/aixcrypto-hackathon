@@ -1,182 +1,87 @@
-/* mint nft */
-document.getElementById('email-form').addEventListener('submit', function (e) {
-    e.preventDefault();
+// 要素を作成する関数
+function createItem(name, imgSrc) {
+    let item = document.createElement('div');
 
-    const mintName = document.getElementById('mint-name').value;
-    const mintProfile = document.getElementById('mint-profile').value;
-    const mintPrompt = document.getElementById('mint-prompt').value;
-    const mintImage = document.getElementById('mint-profile-img').src;
+    item.setAttribute('data-w-id', '0e44398a-7d63-9660-a530-037d956360c0');
+    item.className = 'grid---item';
+    item.innerHTML = `
+        <div class="grid---item-text-copy">♡ 100</div>
+        <img src="${imgSrc}" loading="eager" width="375" height="375" alt="" sizes="(max-width: 767px) 23vw, 15vw" class="grid---image">
+        <div class="grid---item-text">${name}</div>
+        <div class="grid---item-text-copy-copy">👑 No.1</div>
+    `;
 
-    const nftMetadata = {
-        "name": mintName,
-        "profile": mintProfile,
-        "prompt": mintPrompt,
-        "image": mintImage,
-    }
-
-    const jsonBlob = new Blob([JSON.stringify(nftMetadata)], { type: "application/json" });
-    const uploadTask = storageRef.child(`metadata/${nftMetadata.name}.json`).put(jsonBlob);
-    uploadTask.on('state_changed',
-        function (snapshot) {
-            // アップロードの進行状況を監視する機能
-            var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-            console.log('Upload is ' + progress + '% done');
-        },
-        function (error) {
-            // エラーハンドリング
-            console.log(error);
-        },
-        function () {
-            // 成功したときの処理
-            uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
-                console.log('File available at', downloadURL);
-                mint(downloadURL).then((tx) => {
-                    console.log(tx);
-                }).catch((error) => {
-                    console.log(error);
-                });
-            });
-        }
-    );
-});
-
-/* firebase config */
-const firebaseConfig = {
-    apiKey: "AIzaSyBYXbg_87JPWeN19EUNFAi9ZrbLs3xZ7MM",
-    authDomain: "ai-idol-election.firebaseapp.com",
-    projectId: "ai-idol-election",
-    storageBucket: "ai-idol-election.appspot.com",
-    messagingSenderId: "383067549965",
-    appId: "1:383067549965:web:3c814c3fea7ae5ad664044",
-    measurementId: "G-NZDBNLYHCF"
-};
-firebase.initializeApp(firebaseConfig);
-const storage = firebase.storage();
-const storageRef = storage.ref();
-
-/* upload image */
-document.getElementById('mint-img-btn').addEventListener('click', function () {
-    document.getElementById('fileInput').click();
-});
-document.getElementById('fileInput').addEventListener('change', function (e) {
-    var file = e.target.files[0];
-    var reader = new FileReader();
-
-    reader.onloadend = function () {
-        // Create a canvas and draw the image onto it
-        var canvas = document.createElement('canvas');
-        var context = canvas.getContext('2d');
-
-        var img = document.getElementById('displayImg');
-        img.src = reader.result;
-
-        img.onload = function () {
-            // Calculate the position and size for the square crop
-            var size = Math.min(img.naturalWidth, img.naturalHeight);
-            var left = (img.naturalWidth - size) / 2;
-            var top = (img.naturalHeight - size) / 2;
-
-            // Draw the cropped image onto the canvas
-            context.drawImage(img, left, top, size, size, 0, 0, canvas.width, canvas.height);
-
-            // Create a new canvas for the resized image
-            var resizeCanvas = document.createElement('canvas');
-            var resizeContext = resizeCanvas.getContext('2d');
-            resizeCanvas.width = 350;
-            resizeCanvas.height = 350;
-
-            // Draw the cropped image onto the resize canvas
-            resizeContext.drawImage(canvas, 0, 0, canvas.width, canvas.height, 0, 0, resizeCanvas.width, resizeCanvas.height);
-            var dataUrl = resizeCanvas.toDataURL();
-
-            // Set the cropped image as the src of the mint-img-btn
-            document.getElementById('mint-profile-img').src = dataUrl;
-
-            // Convert data URL to Blob
-            var byteString = atob(dataUrl.split(',')[1]);
-            var mimeString = dataUrl.split(',')[0].split(':')[1].split(';')[0];
-            var ab = new ArrayBuffer(byteString.length);
-            var ia = new Uint8Array(ab);
-            for (var i = 0; i < byteString.length; i++) {
-                ia[i] = byteString.charCodeAt(i);
-            }
-            var blob = new Blob([ab], { type: mimeString });
-
-            // Upload the cropped image to Firebase
-            var uploadTask = storageRef.child('images/' + file.name).put(blob);
-            uploadTask.on('state_changed', function (snapshot) {
-                var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                console.log('Upload is ' + progress + '% done');
-            }, function (error) {
-                console.log('Upload failed:', error);
-            }, function () {
-                uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
-                    console.log('Upload completed successfully!');
-                    console.log('File available at', downloadURL);
-                });
-            });
-        }
-    }
-
-    if (file) {
-        reader.readAsDataURL(file);
-    }
-});
-
-window.onload = function () {
-    if (window.ethereum) {
-        try {
-            getAccount().then((account) => {
-                console.log(account);
-            });
-
-            getBlockNumber().then((blockNumber) => {
-                console.log(blockNumber);
-            });
-        } catch (error) {
-            console.error("User denied account access");
-        }
-    }
-    else {
-        console.log('Non-Ethereum browser detected. You should consider trying MetaMask!');
-    }
+    return item;
 }
 
-async function getAccount() {
-    if (!window.ethereum) throw new Error('No Ethereum browser detected.');
-    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-    return accounts[0];
+function createBigItem(name, imgSrc) {
+    let item = document.createElement('div');
+
+    item.setAttribute('id', 'w-node-_491d3bc0-9d6a-8041-3ce0-54e85b799c19-4012d612');
+
+    item.innerHTML = `
+        <div data-w-id="0e44398a-7d63-9660-a530-037d956360c0" class="grid---item">
+            <div class="grid---item-text-copy">♡ 100</div>
+            <img src="${imgSrc}" loading="eager" width="375" height="375" alt="" sizes="(max - width: 767px) 23vw, 15vw" class="grid---image">
+            <div class="grid---item-text">${name}</div>
+            <div class="grid---item-text-copy-copy">👑 No.1</div>
+        </div > `;
+
+    return item;
 }
 
-async function getBlockNumber() {
-    if (!window.ethereum) throw new Error('No Ethereum browser detected.');
+
+// ドキュメントが読み込まれたときに実行する
+document.addEventListener('DOMContentLoaded', async () => {
+    getAllNFT();
+});
+
+async function getAllNFT() {
     const web3 = new Web3(window.ethereum);
-    return await web3.eth.getBlockNumber();
-}
-
-async function mint(tokenURI) {
-    if (!window.ethereum) throw new Error('No Ethereum browser detected.');
-    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-    const account = accounts[0];
-    const web3 = new Web3(window.ethereum);
-
     const contract = new web3.eth.Contract(
         nft48Abi,
         '0x6CE76566a96a122D702E1f9D306B48FaA832Df89'
     );
+    let grid = document.getElementById('candidates-grid');
 
-    const gasEstimate = await contract
-        .methods
-        .mintNFT(account, tokenURI)
-        .estimateGas({ from: account });
 
-    const result = await contract
-        .methods
-        .mintNFT(account, tokenURI)
-        .send({ from: account, gas: gasEstimate });
+    for (let j = 0; j < 2; j++) {
+        for (let i = 8; i <= 12; i++) {
+            try {
+                let token_uri = await contract.methods.tokenURI(i).call();
+                console.log(`Token URI foj token ID ${i}: ${token_uri}`);
 
-    return result;
-}
+                try {
+                    let response = await fetch(token_uri);
+                    if (!response.ok) {
+                        console.log(`Failed to fetch data from ${token_uri}: HTTP ${response.status}`);
+                        continue;
+                    }
+
+                    let data = await response.json();
+                    console.log(`Data for token ID ${i}:`, data);
+
+                    if (!data.hasOwnProperty('image')) {
+                        console.log(`No image data for token ID ${i}`);
+                        continue;
+                    }
+
+                    let imageData = data.image;
+                    if ((i + j) % 3 == 0) {
+                        grid.appendChild(createItem(data.name, imageData));
+                    } else {
+                        grid.appendChild(createBigItem(data.name, imageData));
+                    }
+                } catch (fetchError) {
+                    console.log(`Error fetching or processing data for token ID ${i}:`, fetchError);
+                }
+            } catch (contractError) {
+                console.log(`Error calling tokenURI for token ID ${i}:`, contractError);
+                break;
+            }
+        }
+    }
+};
 
 const nft48Abi = [
     {
