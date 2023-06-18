@@ -2,6 +2,7 @@ const gridElement = document.querySelector('.grid');
 gridElement.addEventListener('click', function(event) {
     const parentDiv = event.target.parentElement;
 
+    // TODO: change selector name
     let name = event.target.querySelector('.grid---item-text');
     if (!name) {
         name = parentDiv.querySelector('.grid---item-text');
