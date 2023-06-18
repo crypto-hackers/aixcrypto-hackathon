@@ -20,13 +20,13 @@ async function main() {
   // const Contract = await ethers.getContractFactory("ERC6551Registry");
   // const contract = await Contract.deploy();
 
-  //Deploying Ido NFT
-  const Contract = await ethers.getContractFactory("NFT48");
-  const contract = await Contract.deploy();
-
-  // //Deploying Akushuken NFT
-  // const Contract = await ethers.getContractFactory("akushuNFT");
+  // //Deploying Ido NFT
+  // const Contract = await ethers.getContractFactory("NFT48");
   // const contract = await Contract.deploy();
+
+  //Deploying Akushuken NFT
+  const Contract = await ethers.getContractFactory("akushuNFT");
+  const contract = await Contract.deploy();
 
   await contract.waitForDeployment();
   console.log(contract);

@@ -38,7 +38,7 @@ module.exports = {
     apiKey: {
       shibuya: GNOSISSCAN_KEY,
       polygon: POLYGONSCAN_KEY,
-      mumbai: POLYGONSCAN_KEY
+      polygonMumbai: POLYGONSCAN_KEY
     },
     customChains: [
       {
