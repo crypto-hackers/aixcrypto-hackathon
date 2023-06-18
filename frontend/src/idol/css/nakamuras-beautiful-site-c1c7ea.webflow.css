@@ -552,15 +552,19 @@
 }
 
 .submit-button {
-  text-align: left;
+  width: auto;
+  text-align: center;
   letter-spacing: 2px;
   background-color: rgba(255, 255, 255, .1);
+  align-items: stretch;
   margin-top: 40px;
   margin-bottom: 20px;
   padding-left: 40px;
   padding-right: 40px;
   font-family: "Mosk 700", sans-serif;
+  text-decoration: none;
   transition: background-color .2s;
+  display: block;
 }
 
 .submit-button:hover {
@@ -773,6 +777,54 @@
   font-size: 14px;
   font-weight: 500;
   display: flex;
+}
+
+.navbar-2 {
+  z-index: 999;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 2em 0 2em 2em;
+  display: flex;
+  position: fixed;
+  top: 0%;
+  bottom: 0%;
+  left: 0%;
+  right: auto;
+}
+
+.image-11 {
+  width: 4em;
+  filter: invert();
+}
+
+.wallet_block {
+  flex-direction: column;
+  align-items: flex-start;
+  display: flex;
+}
+
+.wallet_btn {
+  color: #000;
+  cursor: pointer;
+  background-color: #fff;
+  margin-bottom: 1em;
+  padding: .4em .7em;
+  display: block;
+}
+
+.wallet_btn.send_eth {
+  display: none;
+}
+
+.wallet_btn.last {
+  margin-bottom: 0;
+}
+
+.connect_text {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 1em;
 }
 
 @media screen and (min-width: 1920px) {
