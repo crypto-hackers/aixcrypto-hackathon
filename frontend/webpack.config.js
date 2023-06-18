@@ -4,10 +4,12 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = [
     {
+        mode: 'development',
         entry: {
             top: './src/top/js/webflow.js',
             candidates: './src/candidates/js/webflow.js',
             idol: './src/idol/js/webflow.js',
+            bc: './src/lib/bc.js',
         },
         output: {
             filename: '[name].[contenthash].js',
@@ -26,7 +28,17 @@ module.exports = [
                     generator: {
                         filename: 'assets/[name].[contenthash][ext]',
                     },
-                }
+                },
+                {
+                    test: /\.js$/, // .jsファイルに適用する
+                    exclude: /node_modules/, // node_modulesディレクトリは除外
+                    use: {
+                        loader: 'babel-loader',
+                        options: {
+                            presets: ['@babel/preset-env'],
+                        },
+                    },
+                },
             ],
         },
         plugins: [
