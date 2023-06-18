@@ -14,15 +14,30 @@ document.getElementById('email-form').addEventListener('submit', function(e) {
         "image": mintImage,
     }
 
-    uploadJson(nftMetadata).then((url) => {
-        mint(url).then((tx) => {
-            console.log(tx);
-        }).catch((error) => {
+    const jsonBlob = new Blob([JSON.stringify(nftMetadata)], {type: "application/json"});
+    const uploadTask = storageRef.child(`metadata/${nftMetadata.name}.json`).put(jsonBlob);
+    uploadTask.on('state_changed',
+        function(snapshot) {
+            // アップロードの進行状況を監視する機能
+            var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            console.log('Upload is ' + progress + '% done');
+        },
+        function(error) {
+            // エラーハンドリング
             console.log(error);
-        });
-    }).catch((error) => {
-        console.log(error);
-    });
+        },
+        function() {
+            // 成功したときの処理
+            uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+                console.log('File available at', downloadURL);
+                mint(downloadURL).then((tx) => {
+                    console.log(tx);
+                }).catch((error) => {
+                    console.log(error);
+                });
+            });
+        }
+    );
 });
 
 /* firebase config */
@@ -38,14 +53,6 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const storage = firebase.storage();
 const storageRef = storage.ref();
-
-async function uploadJson(nftMetadata) {
-    const jsonBlob = new Blob([JSON.stringify(nftMetadata)], {type: "application/json"});
-    const uploadTask = storageRef.child(`metadata/${nftMetadata.name}.json`).put(jsonBlob);
-    const url = await uploadTask.snapshot.ref.getDownloadURL();
-    console.log(url);
-    return url;
-}
 
 /* upload image */
 document.getElementById('mint-img-btn').addEventListener('click', function () {
