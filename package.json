@@ -14,7 +14,8 @@
   "license": "ISC",
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^3.0.0",
-    "hardhat": "^2.15.0"
+    "hardhat": "^2.15.0",
+    "webpack-cli": "^5.1.4"
   },
   "dependencies": {
     "@openzeppelin/contracts": "^4.9.1"

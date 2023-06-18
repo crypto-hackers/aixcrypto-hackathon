@@ -317,8 +317,9 @@
 }
 
 .image-2 {
-  width: 40vw;
+  width: 30vw;
   height: auto;
+  text-align: left;
   display: block;
 }
 
@@ -827,6 +828,11 @@
   font-size: 1em;
 }
 
+.div-block-10 {
+  text-align: left;
+  display: block;
+}
+
 @media screen and (min-width: 1920px) {
   .nav-link {
     color: #fff;
@@ -1244,7 +1250,7 @@
 }
 
 #w-node-d65e42f6-71f4-cc5d-2329-fa02dfe2a7d3-e4730ea1 {
-  justify-self: end;
+  justify-self: center;
 }
 
 #w-node-f13b7fe7-fb47-9d24-0e50-4395bc66cb73-e4730ea1 {
@@ -1252,7 +1258,7 @@
 }
 
 #w-node-d65e42f6-71f4-cc5d-2329-fa02dfe2a7d3-35cdaebf {
-  justify-self: end;
+  justify-self: center;
 }
 
 #w-node-f13b7fe7-fb47-9d24-0e50-4395bc66cb73-35cdaebf {
