@@ -29,16 +29,16 @@
 <body class="body">
   <div class="hero-section wf-section">
     <div id="hero" class="w-layout-grid grid">
-      <div id="w-node-d65e42f6-71f4-cc5d-2329-fa02dfe2a7d3-e4730ea1"><img src="images/スクリーンショット-2023-06-15-11.47.01.png" loading="lazy" style="opacity:0" data-w-id="fdc94312-8df0-9742-d05d-03f165cde47f" srcset="images/スクリーンショット-2023-06-15-11.47.01-p-500.png 500w, images/スクリーンショット-2023-06-15-11.47.01.png 776w" sizes="(max-width: 479px) 80vw, 40vw" alt="" class="image-2"></div>
+      <!-- TODO: rm srcset and null src -->
+      <div id="w-node-d65e42f6-71f4-cc5d-2329-fa02dfe2a7d3-e4730ea1"><img src="" loading="lazy" style="opacity:0" data-w-id="fdc94312-8df0-9742-d05d-03f165cde47f" sizes="(max-width: 479px) 80vw, 40vw" alt="" class="image-2" id="idol-image"></div>
       <div id="w-node-f13b7fe7-fb47-9d24-0e50-4395bc66cb73-e4730ea1" data-w-id="f13b7fe7-fb47-9d24-0e50-4395bc66cb73" style="opacity:0">
-        <h1>星野　ルビー</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
-        <h3>Heading</h3>
-        <div>This is some text inside of a div block.</div>
-        <h3>Heading</h3>
-        <div>This is some text inside of a div block.</div>
-        <h3>Heading</h3>
-        <div>This is some text inside of a div block.</div>
+        <!-- TODO: add id -->
+        <h1 id="idol-name">星野　ルビー</h1>
+        <p id="idol-profile">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
+        <h3>Prompt</h3>
+        <div id="idol-prompt">This is some text inside of a div block.</div>
+        <h3>Token ID</h3>
+        <div id="idol-tokenId">This is some text inside of a div block.</div>
         <a id="idol-handshake" href="#" class="submit-button w-button">握手する</a>
       </div>
     </div>
@@ -63,6 +63,8 @@
   <script type="text/javascript" src="https://unpkg.com/@walletconnect/web3-provider"></script>
   <script type="text/javascript" src="https://unpkg.com/fortmatic@2.0.6/dist/fortmatic.js"></script>
   <script src="../lib/pages/wallet-connect.js"></script>
+  <!-- TODO: import js -->
+  <script src="../lib/pages/idol/index.js"></script>
   <script src="../lib/pages/idol/mint.js"></script>
 </body>
 </html>
