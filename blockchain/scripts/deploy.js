@@ -12,17 +12,17 @@ async function main() {
   console.log("Deploying contracts with the account:", deployer.address);
   //console.log("Account balance:", (await deployer.getBalance()).toString());
 
-  // //Deploying simple implementation (SimpleERC6551Account)
-  // const Contract = await ethers.getContractFactory("SimpleERC6551Account"); 
-  // const contract = await Contract.deploy(); 
+  //Deploying simple implementation (SimpleERC6551Account)
+  const Contract = await ethers.getContractFactory("SimpleERC6551Account"); 
+  const contract = await Contract.deploy(); 
 
   // //Deploying ERC6551 Registry (copy the one that is pre-deployed in polygon )
   // const Contract = await ethers.getContractFactory("ERC6551Registry");
   // const contract = await Contract.deploy();
 
-  //Deploying Ido NFT
-  const Contract = await ethers.getContractFactory("NFT48");
-  const contract = await Contract.deploy();
+  // //Deploying Ido NFT
+  // const Contract = await ethers.getContractFactory("NFT48");
+  // const contract = await Contract.deploy();
 
   // //Deploying Akushuken NFT
   // const Contract = await ethers.getContractFactory("akushuNFT");
