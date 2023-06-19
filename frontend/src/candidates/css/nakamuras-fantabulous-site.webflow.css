@@ -226,23 +226,11 @@ a {
   }
 }
 
-#w-node-_694693f2-8750-0b6c-3247-b580fc9b4b4a-4012d612, #w-node-f25f53cd-52af-352e-39bb-3e7693f6c325-4012d612, #w-node-_14984673-50ec-519a-74ee-e89c9c271b82-4012d612, #w-node-_491d3bc0-9d6a-8041-3ce0-54e85b799c19-4012d612, #w-node-e56e3737-6048-bbdd-1367-2fd28bb71a2b-4012d612 {
+#w-node-_491d3bc0-9d6a-8041-3ce0-54e85b799c19-4012d612, #w-node-e56e3737-6048-bbdd-1367-2fd28bb71a2b-4012d612 {
   grid-area: span 2 / span 2 / span 2 / span 2;
 }
 
 @media screen and (max-width: 767px) {
-  #w-node-_5f3504af-80e4-40d1-5916-19d1a1e4b5f8-4012d612 {
-    grid-area: span 2 / span 2 / span 2 / span 2;
-  }
-
-  #w-node-_694693f2-8750-0b6c-3247-b580fc9b4b4a-4012d612 {
-    grid-area: span 1 / span 1 / span 1 / span 1;
-  }
-
-  #w-node-eab19d17-ddb0-d266-47ff-216781fd0f9f-4012d612 {
-    grid-area: span 2 / span 2 / span 2 / span 2;
-  }
-
   #w-node-_491d3bc0-9d6a-8041-3ce0-54e85b799c19-4012d612 {
     grid-area: span 1 / span 1 / span 1 / span 1;
   }
