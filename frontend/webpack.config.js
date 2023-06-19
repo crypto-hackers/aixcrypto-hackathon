@@ -11,15 +11,7 @@ module.exports = {
         compress: true,  // gzip圧縮を有効にする
         port: 8080,  // 使用するポート番号
     },
-    entry: {
-        top: './src/top/js/webflow.js',
-        candidates: './src/candidates/js/webflow.js',
-        idol: './src/idol/js/webflow.js',
-        candidatesJs: './src/lib/pages/candidates/index.js',
-        idolJs: './src/lib/pages/idol/index.js',
-        idolMintJs: './src/lib/pages/idol/mint.js',
-        walletConnectJs: './src/lib/pages/wallet-connect.js',
-    },
+    entry: './src/top/js/webflow.js',
     output: {
         filename: '[name].[contenthash].js',
         path: path.resolve(__dirname, 'dist'),

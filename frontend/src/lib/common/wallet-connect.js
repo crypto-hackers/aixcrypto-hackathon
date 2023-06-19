@@ -186,6 +186,27 @@ async function sendTransaction() {
 window.addEventListener('load', async () => {
     init();
     $("#btn-connect").on("click", () => { onConnect() });
-    $("#btn-disconnect").on("click", () => { onDisconnect() });
+    $("#btn-disconnect").on("click", () => { mintAkushuNft(1) });
     // $('.send_eth').on('click', () => { sendTransaction() });
 });
+
+//個別TX akushuNFTのMint
+async function mintAkushuNft(mintAmount) {
+    if (!window.ethereum) throw new Error('No Ethereum browser detected.');
+    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+    const account = accounts[0];
+    const web3 = new Web3(window.ethereum);
+
+    const contract = new web3.eth.Contract(
+        akushuNftAbi,
+        akushuNftAddress
+    );
+
+    const result = await contract
+        .methods
+        .mint(mintAmount)
+        .send({ from: account });
+
+    console.log(result);
+    return (result);
+}
