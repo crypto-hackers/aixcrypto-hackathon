@@ -91,42 +91,44 @@ async function getAllNFT() {
         grid.removeChild(grid.firstChild);
     }
 
-    for (let j = 0; j < 2; j++) {
-        for (let i = 8; i <= 12; i++) {
-            try {
-                let token_uri = await contract.methods.tokenURI(i).call();
-                console.log(`Token URI foj token ID ${i}: ${token_uri}`);
+    max_id_token = 30; // TODO: ここを動的にする
 
-                try {
-                    let response = await fetch(token_uri);
-                    if (!response.ok) {
-                        console.log(`Failed to fetch data from ${token_uri}: HTTP ${response.status}`);
-                        continue;
-                    }
+    let promisses = Array(max_id_token - 7).fill().map(async (_, i) => {
+        let index = i + 8;
+        try {
+            let token_uri = await contract.methods.tokenURI(index).call();
+            console.log(`Token URI foj token ID ${index}: ${token_uri}`);
 
-                    let data = await response.json();
-                    console.log(`Data for token ID ${i}:`, data);
-
-                    if (!data.hasOwnProperty('image')) {
-                        console.log(`No image data for token ID ${i}`);
-                        continue;
-                    }
-
-                    let imageData = data.image;
-                    if ((i + j) % 3 == 0) {
-                        grid.appendChild(createItem(data.name, imageData));
-                    } else {
-                        grid.appendChild(createBigItem(data.name, imageData));
-                    }
-                } catch (fetchError) {
-                    console.log(`Error fetching or processing data for token ID ${i}:`, fetchError);
+            return fetch(token_uri).then(async response => {
+                if (!response.ok) {
+                    console.log(`Failed to fetch data from ${token_uri}: HTTP ${response.status}`);
+                    return;
                 }
-            } catch (contractError) {
-                console.log(`Error calling tokenURI for token ID ${i}:`, contractError);
-                break;
+                let data = await response.json();
+                console.log(`Data for token ID ${index}:`, data);
+
+                if (!data.hasOwnProperty('image')) {
+                    console.log(`No image data for token ID ${index}`);
+                    return;
+                }
+
+                let imageData = data.image;
+                // TODO: 握手券の数によって変える
+                let item = (index % 4 == 0) ? createBigItem(data.name, imageData) : createItem(data.name, imageData);
+                grid.appendChild(item);
+            }).catch(fetchError => {
+                console.log(`Error fetching or processing data for token ID ${index}:`, fetchError);
             }
+            );
+        } catch (contractError) {
+            console.log(`Error calling tokenURI for token ID ${index}:`, contractError);
         }
-    }
+    });
+
+    Promise.allSettled(promises).then(() => {
+        console.log("All promises have been processed.");
+    });
+
 };
 
 const nft48Abi = [
