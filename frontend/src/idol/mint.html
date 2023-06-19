@@ -43,16 +43,21 @@
   <script>
     //Chain周りの設定
     const nft48AddressMumbai = '0x6CE76566a96a122D702E1f9D306B48FaA832Df89';
+    const nft48AddressShibuya = '0x2B6e9230C79cB8d10E78c10C49278Bf7C8d9919b';
     const erc6551RegistryAddressMumbai = '0x42657c3b3da506185db0ee5c0217fb05d4435b2b';
+    const erc6551RegistryAddressShibuya = '0x2fF679470B8209f900a135B4b3f2C09112f70b45';
     const erc6551ImplementationAddressMumbai = '0x40630A557f1C0B5CecDDc9F223a1dF54d0Cf2666';
+    const erc6551ImplementationAddressShibuya = '0x2FAaF4136C3A1De2ed95cEff1B20D2BA57F1ae16';
     const akushuNftAddressMumbai = '0x7FBA3DBDd16Bb83130168c47c3190f568a21df5a';
+    const akushuNftAddressShibuya = '0x6CE76566a96a122D702E1f9D306B48FaA832Df89';
     const chainIdMumbai = 80001;
+    const chainIdShibuya = 81;
 
-    let nft48Address = nft48AddressMumbai;
-    let erc6551RegistryAddress = erc6551RegistryAddressMumbai;
-    let erc6551ImplementationAddress = erc6551ImplementationAddressMumbai;
-    let akushuNftAddress = akushuNftAddressMumbai;
-    let chainId = chainIdMumbai;
+    let nft48Address = nft48AddressShibuya;
+    let erc6551RegistryAddress = erc6551RegistryAddressShibuya;
+    let erc6551ImplementationAddress = erc6551ImplementationAddressShibuya;
+    let akushuNftAddress = akushuNftAddressShibuya;
+    let chainId = chainIdShibuya;
 
     let mintedTokenId = 1;
 
@@ -214,7 +219,7 @@
                 tokenId, //tokenId; variable
                 1, //salt; can be anything
               )
-              .call({ from: account });
+              .call();
 
       console.log(result);
       return(result);
