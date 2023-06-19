@@ -2,7 +2,6 @@ const gridElement = document.querySelector('.grid');
 gridElement.addEventListener('click', function (event) {
     const parentDiv = event.target.parentElement;
 
-    // TODO: change selector name
     let name = event.target.querySelector('.grid---item-text');
     if (!name) {
         name = parentDiv.querySelector('.grid---item-text');
@@ -52,17 +51,17 @@ gridElement.addEventListener('click', function (event) {
 });
 
 // 要素を作成する関数
-function createItem(name, imgSrc, tokenId, balance, profile, isBig = false) {
+function createItem(nftMetadata, tokenId, balance, isBig = false) {
     let item = document.createElement('div');
     item.setAttribute('data-w-id', '0e44398a-7d63-9660-a530-037d956360c0');
     item.className = 'grid---item';
     item.setAttribute('data-tokenid', tokenId);
     item.setAttribute('data-balance', balance);
-    item.setAttribute('data-profile', profile);
+    item.setAttribute('data-profile', nftMetadata.profile);
     item.innerHTML = `
         <div class="grid---item-text-copy">🤝 ${balance}</div>
-        <img src="${imgSrc}" loading="eager" width="375" height="375" alt="" sizes="(max-width: 767px) 23vw, 15vw" class="grid---image">
-        <div class="grid---item-text">${name}</div>
+        <img src="${nftMetadata.image}" loading="eager" width="375" height="375" alt="" sizes="(max-width: 767px) 23vw, 15vw" class="grid---image">
+        <div class="grid---item-text">${nftMetadata.name}</div>
         <div class="grid---item-text-copy-copy"></div>
     `;
 
@@ -122,10 +121,10 @@ async function getAllNFT() {
                     return;
                 }
 
-                let imageData = data.image;
+                const nftMetadata = data;
                 // TODO: 握手券の数によって変える
-                let item = (index % 4 == 0) ? createItem(data.name, imageData, index, balance, data.profile, isBig = true)
-                    : createItem(data.name, imageData, index, balance, data.profile);
+                let item = (index % 4 == 0) ?
+                    createItem(nftMetadata, index, balance, isBig = true) : createItem(nftMetadata, index, balance);
                 grid.appendChild(item);
             }).catch(fetchError => {
                 console.log(`Error fetching or processing data for token ID ${index}:`, fetchError);
