@@ -87,6 +87,11 @@ async function getAllNFT() {
         nft48Abi,
         nft48Address
     );
+    const akushuContract = new web3.eth.Contract(
+        akushuNftAbi,
+        akushuNftAddress
+    );
+
     let grid = document.getElementById('candidates-grid');
 
     while (grid.firstChild) {
@@ -99,10 +104,10 @@ async function getAllNFT() {
         let index = i + 8;
         try {
             let token_uri = await contract.methods.tokenURI(index).call();
-            let owner = await contract.methods.ownerOf(index).call();
-            let balance = await contract.methods.balanceOf(owner).call();
+            let addr = await viewERC6551Address(index);
+            let balance = await akushuContract.methods.balanceOf(addr, 1).call();
 
-            console.log(`Token URI for token ID ${index}: ${token_uri}, owner: ${owner}, balance: ${balance}`);
+            console.log(`Token URI for token ID ${index}: ${token_uri}, addr: ${addr}, balance: ${balance}`);
 
             return fetch(token_uri).then(async response => {
                 if (!response.ok) {
