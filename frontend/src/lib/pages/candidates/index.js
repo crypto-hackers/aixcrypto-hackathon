@@ -100,7 +100,7 @@ async function getAllNFT() {
     max_id_token = 30; // TODO: ここを動的にする
 
     let promises = Array(max_id_token - 7).fill().map(async (_, i) => {
-        let index = i + 8;
+        let index = i + 30;
         try {
             let token_uri = await contract.methods.tokenURI(index).call();
             let addr = await viewERC6551Address(index);
