@@ -51,7 +51,8 @@
   </section>
   <section class="section-copy _2nd">
     <div class="balance-block-copy last">
-      <h1 class="balance-title-copy">20d 34h 22m 3s</h1>
+      <h1 class="balance-title-copy">Countdown to vote closure:</h1>
+      <h1 class="balance-title-copy" id="time_until">20d 34h 22m 3s</h1>
     </div>
   </section>
   <section class="section _2nd">
@@ -74,5 +75,32 @@
   <script type="text/javascript" src="https://unpkg.com/fortmatic@2.0.6/dist/fortmatic.js"></script>
   <script src="../lib/common/vote.js"></script>
   <script src="../lib/common/wallet-connect.js"></script>
-</body>
+
+ <script>
+    function startCountdown(endDate) {
+      let timer;
+
+      setInterval(function () {
+        let now = new Date().getTime();
+        let distance = endDate - now;
+
+        let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("time_until").textContent = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+        if (distance < 0) {
+          clearInterval(timer);
+          document.getElementById("time_until").textContent = "EXPIRED";
+        }
+      }, 1000);
+    }
+
+    // Set the date we're counting down to
+    let countDownDate = new Date("2023-06-28T00:00:00").getTime();
+    startCountdown(countDownDate);
+  </script>
+  </body>
 </html>

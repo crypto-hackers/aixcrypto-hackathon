@@ -33,13 +33,26 @@
   </nav>
   <div class="hero-section wf-section">
     <div id="hero" class="w-layout-grid grid">
-      <div id="w-node-d65e42f6-71f4-cc5d-2329-fa02dfe2a7d3-e4730ea1"><img class="image-2" src="images/スクリーンショット-2023-06-15-11.47.01.png" alt="" style="opacity:0" sizes="(max-width: 479px) 80vw, 30vw" data-w-id="fdc94312-8df0-9742-d05d-03f165cde47f" id="idol-image" loading="lazy" srcset="images/スクリーンショット-2023-06-15-11.47.01-p-500.png 500w, images/スクリーンショット-2023-06-15-11.47.01.png 776w"></div>
-      <div id="w-node-f13b7fe7-fb47-9d24-0e50-4395bc66cb73-e4730ea1" data-w-id="f13b7fe7-fb47-9d24-0e50-4395bc66cb73" style="opacity:0">
-        <h1 id="idol-name">星野　ルビー</h1>
-        <p id="idol-profile">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
-        <h4>投票数</h4>
-        <p id="idol-balance"></p>
+      <div id="w-node-d65e42f6-71f4-cc5d-2329-fa02dfe2a7d3-e4730ea1">
+        <img class="image-2" src="images/スクリーンショット-2023-06-15-11.47.01.png" alt="" style="opacity:0"
+          sizes="(max-width: 479px) 80vw, 30vw" data-w-id="fdc94312-8df0-9742-d05d-03f165cde47f" id="idol-image"
+          loading="lazy"
+          srcset="images/スクリーンショット-2023-06-15-11.47.01-p-500.png 500w, images/スクリーンショット-2023-06-15-11.47.01.png 776w">
+      </div>
+      <div id="w-node-f13b7fe7-fb47-9d24-0e50-4395bc66cb73-e4730ea1" data-w-id="f13b7fe7-fb47-9d24-0e50-4395bc66cb73"
+        style="opacity:0">
+        <h1 id="idol-name" style="font-size: 2em;">星野　ルビー</h1>
+        <h2 style="font-size: 1.5em;">投票数: <span id="idol-balance"></span></h2>
+        <p id="idol-profile" style="font-size: 1em;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+          varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut
+          commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem
+          vitae risus tristique posuere.</p>
+        <hr style="height:2px; border:none; color:#333; background-color:#333; margin-top: 30px; margin-bottom: 30px;">
+        <label for="mint-prompt">応援コメント</label>
+        <textarea name="field" maxlength="5000" id="comment_from_otaku" data-name="field" placeholder="" class="textarea w-input"></textarea>
+        <div id="idol-talk-prompt" style="display: none;"></div>
         <button id="idol-handshake" href="#" class="submit-button w-button">握手する</button>
+        <div name="field" maxlength="5000" id="idol_reply" data-name="field" placeholder="" class="textarea w-input" style="display: none;"></div>
       </div>
     </div>
   </div>

@@ -97,22 +97,24 @@ document.getElementById('fileInput').addEventListener('change', function (e) {
             var size = Math.min(img.naturalWidth, img.naturalHeight);
             var left = (img.naturalWidth - size) / 2;
             var top = (img.naturalHeight - size) / 2;
+            canvas.width = size;
+            canvas.height = size;
 
             // Draw the cropped image onto the canvas
             context.drawImage(img, left, top, size, size, 0, 0, canvas.width, canvas.height);
 
-            // Create a new canvas for the resized image
-            var resizeCanvas = document.createElement('canvas');
-            var resizeContext = resizeCanvas.getContext('2d');
-            resizeCanvas.width = 350;
-            resizeCanvas.height = 350;
+            // // Create a new canvas for the resized image
+            // var resizeCanvas = document.createElement('canvas');
+            // var resizeContext = resizeCanvas.getContext('2d');
+            // resizeCanvas.width = size;
+            // resizeCanvas.height = size;
 
-            // Draw the cropped image onto the resize canvas
-            resizeContext.drawImage(canvas, 0, 0, canvas.width, canvas.height, 0, 0, resizeCanvas.width, resizeCanvas.height);
-            var dataUrl = resizeCanvas.toDataURL();
+            // // Draw the cropped image onto the resize canvas
+            // resizeContext.drawImage(canvas, 0, 0, canvas.width, canvas.height, 0, 0, resizeCanvas.width, resizeCanvas.height);
+            // var dataUrl = resizeCanvas.toDataURL();
 
             // Set the cropped image as the src of the mint-img-btn
-            document.getElementById('mint-profile-img').src = dataUrl;
+            document.getElementById('mint-profile-img').src = canvas.toDataURL();
 
             // Convert data URL to Blob
             var byteString = atob(dataUrl.split(',')[1]);

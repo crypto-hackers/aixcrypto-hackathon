@@ -24,16 +24,16 @@
       </div>
     </div>
   </div>
-  <nav class="navbar">
-    <a href="index.html" aria-current="page" class="w-inline-block w--current"><img src="images/logo.png" loading="lazy" alt="" class="image"></a>
+  <nav class="navbar" style="z-index: 0; pointer-events: none;">
+    <a style="z-index: 10000;" href="index.html" aria-current="page" class="w-inline-block w--current"><img src="images/logo.png" loading="lazy" alt="" class="image"></a>
     <div class="wallet_block">
       <div class="wallet_btn send_eth">
         <h4 id="disconnect-text" class="connect_text">Send ETH</h4>
       </div>
-      <div id="btn-connect" class="wallet_btn">
+      <div id="btn-connect" class="wallet_btn" style="z-index: 10000; pointer-events: auto;">
         <h4 id="connect-text" class="connect_text">Connect Wallet</h4>
       </div>
-      <div id="btn-disconnect" class="wallet_btn last">
+      <div id="btn-disconnect" class="wallet_btn last" style="z-index: 10000; pointer-events: auto;">
         <h4 id="disconnect-text" class="connect_text">握手券NFTを購入する</h4>
       </div>
     </div>

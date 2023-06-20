@@ -186,7 +186,7 @@ async function sendTransaction() {
 window.addEventListener('load', async () => {
     init();
     $("#btn-connect").on("click", () => { onConnect() });
-    $("#btn-disconnect").on("click", () => { mintAkushuNft(1) });
+    $("#btn-disconnect").on("click", () => { mintAkushuNft(5) });
     // $('.send_eth').on('click', () => { sendTransaction() });
 });
 
